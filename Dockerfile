@@ -1,4 +1,4 @@
-FROM ghcr.io/codecflow/streamer:1.0.0
+FROM --platform=linux/amd64 ghcr.io/codecflow/streamer:1.0.0
 
 ENV PATH="/root/.bun/bin:${PATH}"
 
