@@ -1,0 +1,15 @@
+{
+    "name": "conductor",
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "bun run src/index.ts"
+    },
+    "dependencies": {
+        "playwright": "^1.50.1"
+    },
+    "devDependencies": {
+        "bun-types": "latest",
+        "@types/node": "latest"
+    }
+}

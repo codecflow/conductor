@@ -1,0 +1,19 @@
+services:
+  conductor:
+    build:
+      context: .
+    platform: linux/amd64
+    environment:
+      - URL=${URL:-https://google.com}
+      - RTMP=${RTMP:-rtmp://host.docker.internal:1935/live/stream}
+      - DISPLAY=:99
+      - OVERLAY=:98
+      - WIDTH=1920
+      - HEIGHT=1080
+      - FPS=30
+    mem_limit: 2g
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
