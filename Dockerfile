@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ghcr.io/codecflow/streamer:1.0.0
+FROM ghcr.io/codecflow/streamer:1.0.0
 
 ENV PATH="/root/.bun/bin:${PATH}"
 
@@ -14,7 +14,5 @@ COPY package.json bun.lock ./
 RUN bun install
 
 COPY src/ src/
-
 ENTRYPOINT ["/init"]
-
 CMD ["bun", "start"]
