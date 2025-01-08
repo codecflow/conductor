@@ -15,4 +15,6 @@ RUN bun install
 
 COPY src/ src/
 
+ENTRYPOINT ["/init"]
+
 CMD ["bun", "start"]
