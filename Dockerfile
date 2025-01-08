@@ -14,5 +14,5 @@ COPY package.json bun.lock ./
 RUN bun install
 
 COPY src/ src/
-ENTRYPOINT ["/init"]
+
 CMD ["bun", "start"]
