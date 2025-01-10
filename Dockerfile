@@ -15,4 +15,6 @@ RUN bun install
 
 COPY src/ src/
 
+EXPOSE 9222
+
 CMD ["bun", "start"]

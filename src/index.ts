@@ -4,19 +4,19 @@ import { Config } from "./config";
 
 import stream from "./stream";
 
-import { fullscreen } from "./scripts/dom";
-import { unmute } from "./scripts/audio";
+const { width, height, rtmp, display, overlay } = Config;
 
-const { url, width, height } = Config;
+stream(rtmp, display, overlay);
 
-const context = await chromium.launchPersistentContext("", {
+chromium.launchPersistentContext("", {
   headless: false,
   executablePath: "/usr/bin/chromium-browser",
   viewport: { width, height },
   args: [
     "--no-sandbox",
     "--disable-gpu",
-    '--app=data:text/html,<html style="background: transparent;"><body style="background: transparent;"><h1 style="background:red;">HELLO</h2></body></html>',
+    "--remote-debugging-port=9222",
+    '--app=data:text/html,<html style="background: transparent;"><body style="background: transparent;"><h1 style="background:red;">HELLO</h1></body></html>',
     "--test-type",
     "--disable-software-rasterizer",
     "--disable-dev-shm-usage",
@@ -33,12 +33,5 @@ const context = await chromium.launchPersistentContext("", {
   ],
   ignoreDefaultArgs: ["--enable-automation"],
 });
-
-const page = context.pages()[0];
-await page.goto(url, { waitUntil: "networkidle" });
-await page.evaluate(unmute);
-await page.evaluate(fullscreen);
-
-stream(Config.rtmp, Config.display, Config.overlay);
 
 await new Promise(() => {});

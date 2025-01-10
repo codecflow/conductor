@@ -12,6 +12,8 @@ services:
       - FPS=30
     mem_limit: 2g
     restart: unless-stopped
+    ports:
+      - "9222:9222"
 
 networks:
   default:
