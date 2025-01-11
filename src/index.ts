@@ -17,7 +17,6 @@ chromium.launchPersistentContext("", {
     "--no-sandbox",
     "--disable-gpu",
     "--remote-debugging-port=9222",
-    "--remote-debugging-address=0.0.0.0",
     `--app=data:${url ?? defaultPage}`,
     "--test-type",
     "--disable-software-rasterizer",
