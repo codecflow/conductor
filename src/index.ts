@@ -4,10 +4,11 @@ import { Config } from "./config";
 
 import stream from "./stream";
 
-const { width, height, rtmp, display, overlay } = Config;
+const { width, height, rtmp, display, overlay, url } = Config;
 
 stream(rtmp, display, overlay);
 
+const defaultPage = `text/html,<html style="background: transparent;"><body style="background: transparent;"><h1 style="background:red;">HELLO</h1></body></html>`
 chromium.launchPersistentContext("", {
   headless: false,
   executablePath: "/usr/bin/chromium-browser",
@@ -16,7 +17,7 @@ chromium.launchPersistentContext("", {
     "--no-sandbox",
     "--disable-gpu",
     "--remote-debugging-port=9222",
-    '--app=data:text/html,<html style="background: transparent;"><body style="background: transparent;"><h1 style="background:red;">HELLO</h1></body></html>',
+    `--app=data:${url ?? defaultPage}`,
     "--test-type",
     "--disable-software-rasterizer",
     "--disable-dev-shm-usage",
