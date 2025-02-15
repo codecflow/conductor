@@ -10,6 +10,10 @@ services:
       - WIDTH=1920
       - HEIGHT=1080
       - FPS=30
+      - BITRATE=3000
+      - AUDIO_BITRATE=128000
+      - MAX_RETRIES=3
+      - RETRY_DELAY=5000
     mem_limit: 2g
     restart: unless-stopped
     ports:
